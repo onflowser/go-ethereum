@@ -35,17 +35,24 @@ type (
 	// GetHashFunc returns the n'th block hash in the blockchain
 	// and is used by the BLOCKHASH EVM op code.
 	GetHashFunc func(uint64) common.Hash
-	// GetPrecompileFunc returns a precompile contract if available for the given
-	// address, it returns false if no precompile is deployed at that address
-	GetPrecompileFunc func(rules params.Rules, addr common.Address) (PrecompiledContract, bool)
 )
 
 func (evm *EVM) precompile(addr common.Address) (PrecompiledContract, bool) {
-	if evm.Context.GetPrecompile != nil {
-		p, isPrecompile := evm.Context.GetPrecompile(evm.chainRules, addr)
-		return p, isPrecompile
+	var precompiles map[common.Address]PrecompiledContract
+	switch {
+	case evm.chainRules.IsCancun:
+		precompiles = PrecompiledContractsCancun
+	case evm.chainRules.IsBerlin:
+		precompiles = PrecompiledContractsBerlin
+	case evm.chainRules.IsIstanbul:
+		precompiles = PrecompiledContractsIstanbul
+	case evm.chainRules.IsByzantium:
+		precompiles = PrecompiledContractsByzantium
+	default:
+		precompiles = PrecompiledContractsHomestead
 	}
-	return nil, false
+	p, ok := precompiles[addr]
+	return p, ok
 }
 
 // BlockContext provides the EVM with auxiliary information. Once provided
@@ -58,8 +65,6 @@ type BlockContext struct {
 	Transfer TransferFunc
 	// GetHash returns the hash corresponding to n
 	GetHash GetHashFunc
-	// GetPrecompileFunc gets a precompile by address if available
-	GetPrecompile GetPrecompileFunc
 
 	// Block information
 	Coinbase    common.Address // Provides information for COINBASE
