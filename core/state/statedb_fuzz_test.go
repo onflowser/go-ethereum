@@ -29,15 +29,15 @@ import (
 	"testing"
 	"testing/quick"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state/snapshot"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
-	"github.com/ethereum/go-ethereum/trie/triedb/pathdb"
-	"github.com/ethereum/go-ethereum/trie/triestate"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/core/rawdb"
+	"github.com/onflow/go-ethereum/core/state/snapshot"
+	"github.com/onflow/go-ethereum/core/types"
+	"github.com/onflow/go-ethereum/crypto"
+	"github.com/onflow/go-ethereum/rlp"
+	"github.com/onflow/go-ethereum/trie"
+	"github.com/onflow/go-ethereum/trie/triedb/pathdb"
+	"github.com/onflow/go-ethereum/trie/triestate"
 )
 
 // A stateTest checks that the state changes are correctly captured. Instances

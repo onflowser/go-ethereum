@@ -22,13 +22,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/state/snapshot"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/eth/tracers/logger"
-	"github.com/ethereum/go-ethereum/tests"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/core/rawdb"
+	"github.com/onflow/go-ethereum/core/state"
+	"github.com/onflow/go-ethereum/core/state/snapshot"
+	"github.com/onflow/go-ethereum/core/vm"
+	"github.com/onflow/go-ethereum/eth/tracers/logger"
+	"github.com/onflow/go-ethereum/tests"
 	"github.com/urfave/cli/v2"
 )
 

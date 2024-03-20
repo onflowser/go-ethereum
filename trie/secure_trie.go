@@ -17,10 +17,10 @@
 package trie
 
 import (
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie/trienode"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/core/types"
+	"github.com/onflow/go-ethereum/rlp"
+	"github.com/onflow/go-ethereum/trie/trienode"
 )
 
 // SecureTrie is the old name of StateTrie.
