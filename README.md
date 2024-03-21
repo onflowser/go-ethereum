@@ -1,3 +1,7 @@
+## Warning
+
+This is a fork of [Go Ethereum](github.com/ethereum/go-ethereum) with some minor changes to the VM code, which are planned to be ported to the upstream at some time in the future. If you are planning to contribute, consider contributing the the original repo. 
+
 ## Go Ethereum
 
 Official Golang execution layer implementation of the Ethereum protocol.

@@ -24,17 +24,17 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/eth/tracers"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/tests"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/common/hexutil"
+	"github.com/onflow/go-ethereum/common/math"
+	"github.com/onflow/go-ethereum/core"
+	"github.com/onflow/go-ethereum/core/rawdb"
+	"github.com/onflow/go-ethereum/core/types"
+	"github.com/onflow/go-ethereum/core/vm"
+	"github.com/onflow/go-ethereum/eth/tracers"
+	"github.com/onflow/go-ethereum/params"
+	"github.com/onflow/go-ethereum/rlp"
+	"github.com/onflow/go-ethereum/tests"
 )
 
 type callContext struct {
@@ -129,14 +129,15 @@ func testCallTracer(tracerName string, dirPath string, t *testing.T) {
 					GasPrice: tx.GasPrice(),
 				}
 				context = vm.BlockContext{
-					CanTransfer: core.CanTransfer,
-					Transfer:    core.Transfer,
-					Coinbase:    test.Context.Miner,
-					BlockNumber: new(big.Int).SetUint64(uint64(test.Context.Number)),
-					Time:        uint64(test.Context.Time),
-					Difficulty:  (*big.Int)(test.Context.Difficulty),
-					GasLimit:    uint64(test.Context.GasLimit),
-					BaseFee:     test.Genesis.BaseFee,
+					CanTransfer:   core.CanTransfer,
+					Transfer:      core.Transfer,
+					GetPrecompile: core.GetPrecompile,
+					Coinbase:      test.Context.Miner,
+					BlockNumber:   new(big.Int).SetUint64(uint64(test.Context.Number)),
+					Time:          uint64(test.Context.Time),
+					Difficulty:    (*big.Int)(test.Context.Difficulty),
+					GasLimit:      uint64(test.Context.GasLimit),
+					BaseFee:       test.Genesis.BaseFee,
 				}
 				triedb, _, statedb = tests.MakePreState(rawdb.NewMemoryDatabase(), test.Genesis.Alloc, false, rawdb.HashScheme)
 			)
@@ -232,13 +233,14 @@ func benchTracer(tracerName string, test *callTracerTest, b *testing.B) {
 		GasPrice: tx.GasPrice(),
 	}
 	context := vm.BlockContext{
-		CanTransfer: core.CanTransfer,
-		Transfer:    core.Transfer,
-		Coinbase:    test.Context.Miner,
-		BlockNumber: new(big.Int).SetUint64(uint64(test.Context.Number)),
-		Time:        uint64(test.Context.Time),
-		Difficulty:  (*big.Int)(test.Context.Difficulty),
-		GasLimit:    uint64(test.Context.GasLimit),
+		CanTransfer:   core.CanTransfer,
+		Transfer:      core.Transfer,
+		GetPrecompile: core.GetPrecompile,
+		Coinbase:      test.Context.Miner,
+		BlockNumber:   new(big.Int).SetUint64(uint64(test.Context.Number)),
+		Time:          uint64(test.Context.Time),
+		Difficulty:    (*big.Int)(test.Context.Difficulty),
+		GasLimit:      uint64(test.Context.GasLimit),
 	}
 	triedb, _, statedb := tests.MakePreState(rawdb.NewMemoryDatabase(), test.Genesis.Alloc, false, rawdb.HashScheme)
 	defer triedb.Close()
@@ -272,13 +274,14 @@ func TestInternals(t *testing.T) {
 			GasPrice: big.NewInt(1),
 		}
 		context = vm.BlockContext{
-			CanTransfer: core.CanTransfer,
-			Transfer:    core.Transfer,
-			Coinbase:    common.Address{},
-			BlockNumber: new(big.Int).SetUint64(8000000),
-			Time:        5,
-			Difficulty:  big.NewInt(0x30000),
-			GasLimit:    uint64(6000000),
+			CanTransfer:   core.CanTransfer,
+			Transfer:      core.Transfer,
+			GetPrecompile: core.GetPrecompile,
+			Coinbase:      common.Address{},
+			BlockNumber:   new(big.Int).SetUint64(8000000),
+			Time:          5,
+			Difficulty:    big.NewInt(0x30000),
+			GasLimit:      uint64(6000000),
 		}
 	)
 	mkTracer := func(name string, cfg json.RawMessage) tracers.Tracer {

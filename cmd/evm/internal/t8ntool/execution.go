@@ -20,22 +20,22 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/consensus/misc"
-	"github.com/ethereum/go-ethereum/consensus/misc/eip4844"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/common/math"
+	"github.com/onflow/go-ethereum/consensus/ethash"
+	"github.com/onflow/go-ethereum/consensus/misc"
+	"github.com/onflow/go-ethereum/consensus/misc/eip4844"
+	"github.com/onflow/go-ethereum/core"
+	"github.com/onflow/go-ethereum/core/rawdb"
+	"github.com/onflow/go-ethereum/core/state"
+	"github.com/onflow/go-ethereum/core/types"
+	"github.com/onflow/go-ethereum/core/vm"
+	"github.com/onflow/go-ethereum/crypto"
+	"github.com/onflow/go-ethereum/ethdb"
+	"github.com/onflow/go-ethereum/log"
+	"github.com/onflow/go-ethereum/params"
+	"github.com/onflow/go-ethereum/rlp"
+	"github.com/onflow/go-ethereum/trie"
 	"golang.org/x/crypto/sha3"
 )
 
@@ -145,14 +145,15 @@ func (pre *Prestate) Apply(vmConfig vm.Config, chainConfig *params.ChainConfig,
 	)
 	gaspool.AddGas(pre.Env.GasLimit)
 	vmContext := vm.BlockContext{
-		CanTransfer: core.CanTransfer,
-		Transfer:    core.Transfer,
-		Coinbase:    pre.Env.Coinbase,
-		BlockNumber: new(big.Int).SetUint64(pre.Env.Number),
-		Time:        pre.Env.Timestamp,
-		Difficulty:  pre.Env.Difficulty,
-		GasLimit:    pre.Env.GasLimit,
-		GetHash:     getHash,
+		CanTransfer:   core.CanTransfer,
+		Transfer:      core.Transfer,
+		Coinbase:      pre.Env.Coinbase,
+		BlockNumber:   new(big.Int).SetUint64(pre.Env.Number),
+		Time:          pre.Env.Timestamp,
+		Difficulty:    pre.Env.Difficulty,
+		GasLimit:      pre.Env.GasLimit,
+		GetHash:       getHash,
+		GetPrecompile: core.GetPrecompile,
 	}
 	// If currentBaseFee is defined, add it to the vmContext.
 	if pre.Env.BaseFee != nil {

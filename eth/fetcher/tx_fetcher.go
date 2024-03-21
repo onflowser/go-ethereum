@@ -25,13 +25,13 @@ import (
 	"sort"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/lru"
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/core/txpool"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/common/lru"
+	"github.com/onflow/go-ethereum/common/mclock"
+	"github.com/onflow/go-ethereum/core/txpool"
+	"github.com/onflow/go-ethereum/core/types"
+	"github.com/onflow/go-ethereum/log"
+	"github.com/onflow/go-ethereum/metrics"
 )
 
 const (

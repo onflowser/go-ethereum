@@ -25,14 +25,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/console/prompt"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/eth/ethconfig"
-	"github.com/ethereum/go-ethereum/internal/jsre"
-	"github.com/ethereum/go-ethereum/miner"
-	"github.com/ethereum/go-ethereum/node"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/console/prompt"
+	"github.com/onflow/go-ethereum/core"
+	"github.com/onflow/go-ethereum/eth"
+	"github.com/onflow/go-ethereum/eth/ethconfig"
+	"github.com/onflow/go-ethereum/internal/jsre"
+	"github.com/onflow/go-ethereum/miner"
+	"github.com/onflow/go-ethereum/node"
 )
 
 const (

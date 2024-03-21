@@ -24,13 +24,13 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/eth/tracers"
-	"github.com/ethereum/go-ethereum/tests"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/core"
+	"github.com/onflow/go-ethereum/core/rawdb"
+	"github.com/onflow/go-ethereum/core/types"
+	"github.com/onflow/go-ethereum/core/vm"
+	"github.com/onflow/go-ethereum/eth/tracers"
+	"github.com/onflow/go-ethereum/tests"
 )
 
 // prestateTrace is the result of a prestateTrace run.
@@ -99,14 +99,15 @@ func testPrestateDiffTracer(tracerName string, dirPath string, t *testing.T) {
 					GasPrice: tx.GasPrice(),
 				}
 				context = vm.BlockContext{
-					CanTransfer: core.CanTransfer,
-					Transfer:    core.Transfer,
-					Coinbase:    test.Context.Miner,
-					BlockNumber: new(big.Int).SetUint64(uint64(test.Context.Number)),
-					Time:        uint64(test.Context.Time),
-					Difficulty:  (*big.Int)(test.Context.Difficulty),
-					GasLimit:    uint64(test.Context.GasLimit),
-					BaseFee:     test.Genesis.BaseFee,
+					CanTransfer:   core.CanTransfer,
+					Transfer:      core.Transfer,
+					GetPrecompile: core.GetPrecompile,
+					Coinbase:      test.Context.Miner,
+					BlockNumber:   new(big.Int).SetUint64(uint64(test.Context.Number)),
+					Time:          uint64(test.Context.Time),
+					Difficulty:    (*big.Int)(test.Context.Difficulty),
+					GasLimit:      uint64(test.Context.GasLimit),
+					BaseFee:       test.Genesis.BaseFee,
 				}
 				triedb, _, statedb = tests.MakePreState(rawdb.NewMemoryDatabase(), test.Genesis.Alloc, false, rawdb.HashScheme)
 			)

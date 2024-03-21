@@ -22,14 +22,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/beacon/engine"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/onflow/go-ethereum/beacon/engine"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/core"
+	"github.com/onflow/go-ethereum/core/types"
+	"github.com/onflow/go-ethereum/eth"
+	"github.com/onflow/go-ethereum/log"
+	"github.com/onflow/go-ethereum/node"
+	"github.com/onflow/go-ethereum/rpc"
 )
 
 const devEpochLength = 32

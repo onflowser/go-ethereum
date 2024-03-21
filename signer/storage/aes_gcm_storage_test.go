@@ -23,9 +23,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/log"
 	"github.com/mattn/go-colorable"
+	"github.com/onflow/go-ethereum/common"
+	"github.com/onflow/go-ethereum/log"
 )
 
 func TestEncryption(t *testing.T) {
